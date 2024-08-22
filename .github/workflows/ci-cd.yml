@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  deploy:
+  build_push_deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -35,4 +35,4 @@ jobs:
           key: ${{ secrets.DEMO_EC2_SSH_KEY }}
           script: |
             sudo docker pull zombie19x/demo-node-app:latest
-            sudo docker compose -d -f /app/demo-node-app/docker-compose.yml up
+            sudo docker compose -f /app/demo-node-app/docker-compose.yml up -d
